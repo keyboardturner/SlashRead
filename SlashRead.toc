@@ -1,0 +1,7 @@
+## Title: SlashRead
+## Version: 0.0.1
+## Author: Keyboardturner
+## Interface: 70100
+## Notes: Automates /read when looking at various windows.
+
+SlashRead.lua
