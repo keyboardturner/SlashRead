@@ -189,6 +189,62 @@ function SlashRead:OnEvent(event, addon)
 	end)
 		
 	TradeSkillFrame:HookScript("OnHide", CancelEmote)
+	
+	--ADDONS--
+	
+	
+	elseif addon == "totalRP3_Extended_Tools" then
+		TRP3_ToolFrame:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	TRP3_ToolFrame:HookScript("OnHide", CancelEmote)	--this doesn't work for some reason?
+	
+	elseif addon == "totalRP3_Extended" then
+		TRP3_DocumentFrame:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	TRP3_DocumentFrame:HookScript("OnHide", CancelEmote)
+	
+	elseif addon == "WowLua" then
+		WowLuaFrame:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	WowLuaFrame:HookScript("OnHide", CancelEmote)
+
+	--Still building compatibility
+	--[[
+	elseif addon == "MacroToolkit" then
+		MacroToolkitFrame:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	MacroToolkitFrame:HookScript("OnHide", CancelEmote)
+	
+	elseif addon == "totalRP3" then
+		TRP3_MainFrame:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	TRP3_MainFrame:HookScript("OnHide", CancelEmote)
+	
+	elseif addon == "totalRP3" then
+		TRP3_SoundsHistoryFrame:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	TRP3_SoundsHistoryFrame:HookScript("OnHide", CancelEmote)
+	
+	elseif addon == "totalRP3" then
+		TRP3_NPCTalk:HookScript("OnShow", function()
+			DoEmote("READ", nil, true)
+	end)
+		
+	TRP3_NPCTalk:HookScript("OnHide", CancelEmote)
+	]]
+	
 		
 	--If the other method doesn't work, use this method.
 	--[[elseif addon == "Blizzard_VoidStorageUI" then
@@ -203,6 +259,15 @@ end
 
 SlashRead:RegisterEvent("ADDON_LOADED")
 SlashRead:SetScript("OnEvent", SlashRead.OnEvent)
+
+local ReadITF = CreateFrame("Frame", ReadITF, ItemTextFrame)
+ReadITF:SetPoint("CENTER")
+ReadITF:SetScript("OnHide", function()
+	CancelEmote();
+end);
+ReadITF:SetScript("OnShow", function()
+	DoEmote("READ", nil, true);
+end);
 
 local ReadGFF = CreateFrame("Frame", ReadGFF, PVEFrame)
 ReadGFF:SetPoint("CENTER")
@@ -303,6 +368,145 @@ ReadQLPDF:SetScript("OnShow", function()
 	DoEmote("READ", nil, true);
 end);
 
+local ReadOFF = CreateFrame("Frame", ReadOFF, ObliterumForgeFrame)
+ReadOFF:SetPoint("CENTER")
+ReadOFF:SetScript("OnHide", function()
+	CancelEmote();
+end);
+ReadOFF:SetScript("OnShow", function()
+	DoEmote("READ", nil, true);
+end);
+
+local ReadMacF = CreateFrame("Frame", ReadMacF, MacroFrame)
+ReadMacF:SetPoint("CENTER")
+ReadMacF:SetScript("OnHide", function()
+	CancelEmote();
+end);
+ReadMacF:SetScript("OnShow", function()
+	DoEmote("READ", nil, true);
+end);
+
+--ADDONS--
+
+if IsAddOnLoaded("Best_Quest") == true then
+	local ReadBestQuest = CreateFrame("Frame", ReadBestQuest, bestquestMain)
+	ReadBestQuest:SetPoint("CENTER")
+	ReadBestQuest:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadBestQuest:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+
+if IsAddOnLoaded("totalRP3") == true then
+	local ReadTRP3MF = CreateFrame("Frame", ReadTRP3MF, TRP3_MainFrame)
+	ReadTRP3MF:SetPoint("CENTER")
+	ReadTRP3MF:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadTRP3MF:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+
+--does not work
+--[[
+if IsAddOnLoaded("totalRP3") == true then
+	local ReadTRP3SHF = CreateFrame("Frame", ReadTRP3SHF, TRP3_SoundsHistoryFrame)
+	ReadTRP3SHF:SetPoint("CENTER")
+	ReadTRP3SHF:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadTRP3SHF:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end]]
+
+if IsAddOnLoaded("totalRP3") == true then
+	local ReadTRP3NPCT = CreateFrame("Frame", ReadTRP3NPCT, TRP3_NPCTalk)
+	ReadTRP3NPCT:SetPoint("CENTER")
+	ReadTRP3NPCT:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadTRP3NPCT:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+
+--the same effect as above
+--[[
+if IsAddOnLoaded("totalRP3") == true then
+	local ReadTRP3TF = CreateFrame("Frame", ReadTRP3TF, TRP3_ToolFrame)
+	ReadTRP3TF:SetPoint("CENTER")
+	ReadTRP3TF:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadTRP3TF:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+]]
+
+if IsAddOnLoaded("Altoholic") == true then
+	local ReadAltoFrame = CreateFrame("Frame", ReadAltoFrame, AltoholicFrame)
+	ReadAltoFrame:SetPoint("CENTER")
+	ReadAltoFrame:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadAltoFrame:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+
+if IsAddOnLoaded("FishingBuddy") == true then
+	local ReadFishBud = CreateFrame("Frame", ReadFishBud, FishingBuddyFrame)
+	ReadFishBud:SetPoint("CENTER")
+	ReadFishBud:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadFishBud:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+--[[
+if IsAddOnLoaded("MacroToolkit") == true then
+	local ReadMacTKF = CreateFrame("Frame", ReadMacTKF, MacroToolkitFrame)
+	ReadMacTKF:SetPoint("CENTER")
+	ReadMacTKF:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadMacTKF:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+]]
+
+if IsAddOnLoaded("RaidAchievement") == true then
+	local ReadRaidAch = CreateFrame("Frame", ReadRaidAch, PSFeamain1)
+	ReadRaidAch:SetPoint("CENTER")
+	ReadRaidAch:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadRaidAch:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+
+--[[
+if IsAddOnLoaded("TradeSkillMaster") == true then
+	local ReadTSM = CreateFrame("Frame", ReadTSM, TSMMainFrame1)
+	ReadTSM:SetPoint("CENTER")
+	ReadTSM:SetScript("OnHide", function()
+		CancelEmote();
+	end);
+	ReadTSM:SetScript("OnShow", function()
+		DoEmote("READ", nil, true);
+	end);
+end
+]]
+
+
 --only temporary usage since loading Blizzard_VoidStorageUI does not work.
 local ReadVS = CreateFrame("Frame", ReadVS, VoidStorageFrame)
 ReadVS:SetPoint("CENTER")
@@ -313,6 +517,9 @@ ReadVS:SetScript("OnShow", function()
 	DoEmote("READ", nil, true);
 end);
 
+
+
+
 --Does not work.
 --[[local ReadWDF = CreateFrame("Frame", ReadWDF, WardrobeFrame)
 ReadWDF:SetPoint("CENTER")
@@ -321,4 +528,14 @@ ReadWDF:SetScript("OnHide", function()
 end);
 ReadWDF:SetScript("OnShow", function()
 	DoEmote("READ", nil, true);
-end);]]
+end);
+
+local ReadOHTF = CreateFrame("Frame", ReadOHTF, OrderHallTalentFrame)
+ReadOHTF:SetPoint("CENTER")
+ReadOHTF:SetScript("OnHide", function()
+	CancelEmote();
+end);
+ReadOHTF:SetScript("OnShow", function()
+	DoEmote("READ", nil, true);
+end);
+]]
