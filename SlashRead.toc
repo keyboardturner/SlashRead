@@ -1,7 +1,47 @@
-## Title: SlashRead
-## Version: 1.0.0
-## Author: Keyboardturner
 ## Interface: 120000
-## Notes: Automates /read when looking at various windows.
+## Author: Keyboardturner
+## Version: @project-version@
+## Title: SlashRead
+## Notes: Automates /read when looking at various interface frames.
+## IconTexture: Interface/AddOns/SlashRead/SlashReadIcon.blp
+
+## X-Curse-Project-ID: 260659
+## X-Wago-ID: b6XeVJKp
+## X-WoWI-ID: 24379
+
+## Title-enUS: SlashRead
+## Notes-enUS: Automates /read when looking at various interface frames.
+## Title-esES: SlashRead
+## Notes-esES: Automatiza /leer al mirar varios marcos de la interfaz.
+## Title-esMX: SlashRead
+## Notes-esMX: Automatiza /leer al mirar varios marcos de la interfaz.
+## Title-deDE: SlashRead
+## Notes-deDE: Automatisiert /lesen beim Betrachten verschiedener Interface-Fenster.
+## Title-frFR: SlashRead
+## Notes-frFR: Automatise /lire lors de la consultation de différentes fenêtres de l’interface.
+## Title-itIT: SlashRead
+## Notes-itIT: Automatizza /leggi quando si osservano vari elementi dell’interfaccia.
+## Title-ptBR: SlashRead
+## Notes-ptBR: Automatiza /ler ao visualizar vários quadros da interface.
+## Title-ruRU: SlashRead
+## Notes-ruRU: Автоматически использует /read при просмотре различных элементов интерфейса.
+## Title-koKR: SlashRead
+## Notes-koKR: 다양한 인터페이스 창을 보고 있을 때 /읽기 자동으로 실행합니다.
+## Title-zhCN: SlashRead
+## Notes-zhCN: 在查看各种界面窗口时自动执行 /阅读。
+## Title-zhTW: SlashRead
+## Notes-zhTW: 在查看各種介面視窗時自動執行 /閱讀。
+
+## Category: Roleplay
+## Category-deDE: Rollenspiel
+## Category-esES: Juego de rol
+## Category-esMX: Juego de rol
+## Category-frFR: Jeu de rôle
+## Category-itIT: Gioco di Ruolo
+## Category-koKR: 롤플레잉
+## Category-ptBR: Interpretação de Papel
+## Category-ruRU: Ролевая игра
+## Category-zhCN: 角色扮演
+## Category-zhTW: 角色扮演
 
 SlashRead.lua
