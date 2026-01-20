@@ -1,0 +1,16 @@
+package-as: SlashRead
+
+license-output: LICENSE
+
+ignore:
+  - Libs/*/*.rockspec
+  - Libs/*/*.toc
+  - Libs/*/changelog.*
+  - Libs/*/CHANGELOG.*
+  - Libs/*/docs
+  - Libs/*/examples
+  - Libs/*/README.*
+  - Libs/*/tests
+  - Libs/*/.pkgmeta
+  - CHANGELOG.md
+  - README.md
