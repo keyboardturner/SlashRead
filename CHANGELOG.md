@@ -1,3 +1,7 @@
+# 1.0.1
+
+Added a toggle setting for each individual frame affected by the addon
+
 # 1.0.0
 
 Completely refactor addon code, updated support for 12.0+
