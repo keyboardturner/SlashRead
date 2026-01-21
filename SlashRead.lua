@@ -1,8 +1,14 @@
+local _, SRead = ...;
+
+local L = SRead.L
+
 local SlashRead = CreateFrame("Frame")
 SlashRead:RegisterEvent("PLAYER_LOGIN")
 SlashRead:RegisterEvent("ADDON_LOADED")
 SlashRead:RegisterEvent("TAXIMAP_OPENED")
 SlashRead:RegisterEvent("TAXIMAP_CLOSED")
+
+SlashReadDB = SlashReadDB or {}
 
 local function IsBusy()
 	if C_InstanceEncounter and C_InstanceEncounter.IsEncounterInProgress and C_InstanceEncounter.IsEncounterInProgress() then
@@ -20,10 +26,17 @@ local function IsBusy()
 	return false
 end
 
-local function StartReading()
+local function StartReading(self)
+	if self and type(self) == "table" and self.GetName then
+		local frameName = self:GetName()
+		if SlashReadDB[frameName] == false then 
+			return 
+		end
+	end
+
 	if IsBusy() then return end
 	if C_ChatInfo and C_ChatInfo.PerformEmote then
-		C_ChatInfo.PerformEmote("READ", "player", true);
+		C_ChatInfo.PerformEmote("READ", nil, true);
 	else
 		DoEmote("READ", "player");
 	end
@@ -53,21 +66,16 @@ local function ProcessFrameList(frameNameOrList)
 	end
 end
 
-
 local StandardFrames = {
 	"ItemTextFrame",
 	"PVEFrame",
 	"SpellBookFrame",
-	"FriendsFrame",
 	"CharacterFrame",
-	"TaxiFrame",
 	"VideoOptionsFrame",
 	"InterfaceOptionsFrame",
 	"HelpFrame",
 	"MerchantFrame",
 	"QuestLogPopupDetailFrame",
-	"ObliterumForgeFrame",
-	"MacroFrame",
 	"VoidStorageFrame", -- sometimes this loads late, but usually safe here
 };
 
@@ -113,11 +121,61 @@ local ThirdPartyAddons = {
 	["RaidAchievement"]         = "PSFeamain1",
 };
 
+local function RegisterSettings()
+	if not Settings or not Settings.RegisterVerticalLayoutCategory then return end
+
+	local category = Settings.RegisterVerticalLayoutCategory("SlashRead")
+	
+	local function CreateFrameCheckbox(frameName, label, tooltip)
+		if tooltip then
+			tooltip = string.format(L["EnableSettingFor"], tooltip);
+		else
+			tooltip = string.format(L["EnableSettingFor"], label);
+		end
+		if SlashReadDB[frameName] == nil then SlashReadDB[frameName] = true end
+		
+		local setting = Settings.RegisterAddOnSetting(category, "SlashRead_" .. frameName, frameName, SlashReadDB, "boolean", label, true)
+		Settings.CreateCheckbox(category, setting, tooltip)
+	end
+
+	local layout = SettingsPanel:GetLayout(category)
+	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["StandardFrames"]))
+	
+	for _, frameName in pairs(StandardFrames) do
+		CreateFrameCheckbox(frameName, frameName)
+	end
+
+	CreateFrameCheckbox("Taximap", "Flight Master Map", "Flight Master Map (Taximap)")
+
+	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["BlizzardModules"]))
+
+	local function ProcessSettingsList(list)
+		for addonName, frameData in pairs(list) do
+			if type(frameData) == "table" then
+				for _, subFrameName in pairs(frameData) do
+					CreateFrameCheckbox(subFrameName, subFrameName, subFrameName .. " (" .. addonName .. ")");
+				end
+			else
+				CreateFrameCheckbox(frameData, frameData, frameData .. " (" .. addonName .. ")");
+			end
+		end
+	end
+
+	ProcessSettingsList(LoadOnDemandAddons)
+
+	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(L["AddonFrames"]))
+
+	ProcessSettingsList(ThirdPartyAddons)
+
+	Settings.RegisterAddOnCategory(category)
+end
 
 SlashRead:SetScript("OnEvent", function(self, event, arg1)
 	
 	if event == "TAXIMAP_OPENED" then
-		StartReading();
+		if not SlashReadDB["Taximap"] ~= false then -- this has to be inverted :^)
+			StartReading();
+		end
 		return
 	elseif event == "TAXIMAP_CLOSED" then
 		StopReading();
@@ -125,6 +183,8 @@ SlashRead:SetScript("OnEvent", function(self, event, arg1)
 	end
 
 	if event == "PLAYER_LOGIN" then
+		RegisterSettings()
+
 		for _, frameName in pairs(StandardFrames) do
 			HookFrame(_G[frameName]);
 		end

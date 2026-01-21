@@ -4,6 +4,7 @@
 ## Title: SlashRead
 ## Notes: Automates /read when looking at various interface frames.
 ## IconTexture: Interface/AddOns/SlashRead/SlashReadIcon.blp
+## SavedVariables: SlashReadDB
 
 ## X-Curse-Project-ID: 260659
 ## X-Wago-ID: b6XeVJKp
@@ -44,4 +45,5 @@
 ## Category-zhCN: 角色扮演
 ## Category-zhTW: 角色扮演
 
+Localization.lua
 SlashRead.lua
