@@ -99,11 +99,11 @@ local LoadOnDemandAddons = {
 	["Blizzard_QuestChoice"]		= "QuestChoiceFrame",
 	["Blizzard_SocialUI"]			= "FriendsFrame",
 	["Blizzard_StoreUI"]			= "StoreFrame",
-	["Blizzard_CatalogShop"]			= "CatalogShopFrame",
+	--["Blizzard_CatalogShop"]			= "CatalogShopFrame",
 	["Blizzard_TalentUI"]			= "PlayerTalentFrame",
 	["Blizzard_TradeSkillUI"]		= "TradeSkillFrame",
 	["Blizzard_HousingDashboard"]	= "HousingDashboardFrame",
-	["Blizzard_Communities"]		= "CommunitiesFrame",
+	--["Blizzard_Communities"]		= "CommunitiesFrame",
 	["Blizzard_ProfessionsBook"]	= "ProfessionsBookFrame",
 	["Blizzard_PlayerSpells"]		= "PlayerSpellsFrame",
 	-- complex ones with multiple frames
