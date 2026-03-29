@@ -1,3 +1,9 @@
+# 1.0.3
+
+Added options for Blizzard frames: HousingDashboardFrame, ProfessionsBookFrame, and PlayerSpellsFrame
+
+Added options for addon frames: BetterFriendlist
+
 # 1.0.2
 
 12.0.1 toc update

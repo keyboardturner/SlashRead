@@ -15,8 +15,8 @@ local function IsBusy()
 		return true
 	end
 	
-	if UnitAffectingCombat("player") then 
-		return true 
+	if UnitAffectingCombat("player") then
+		return true
 	end
 
 	if UnitInVehicle("player") then
@@ -29,8 +29,8 @@ end
 local function StartReading(self)
 	if self and type(self) == "table" and self.GetName then
 		local frameName = self:GetName()
-		if SlashReadDB[frameName] == false then 
-			return 
+		if SlashReadDB[frameName] == false then
+			return
 		end
 	end
 
@@ -80,45 +80,54 @@ local StandardFrames = {
 };
 
 local LoadOnDemandAddons = {
-	["Blizzard_AchievementUI"]    = "AchievementFrame",
-	["Blizzard_ArchaeologyUI"]    = "ArchaeologyFrame",
-	["Blizzard_ArtifactUI"]       = "ArtifactFrame",
-	["Blizzard_AuctionUI"]        = "AuctionFrame",
-	["Blizzard_BindingUI"]        = "KeyBindingFrame",
-	["Blizzard_BlackMarketUI"]    = "BlackMarketFrame",
-	["Blizzard_Calendar"]         = "CalendarFrame",
-	["Blizzard_Collections"]      = "CollectionsJournal",
-	["Blizzard_EncounterJournal"] = "EncounterJournal",
-	["Blizzard_FlightMap"]        = "FlightMapFrame",
-	["Blizzard_GuildUI"]          = "GuildFrame",
-	["Blizzard_GuildBankUI"]      = "GuildBankFrame",
-	["Blizzard_LookingForGuildUI"]= "LookingForGuildFrame",
-	["Blizzard_MacroUI"]          = "MacroFrame",
-	["Blizzard_OrderHallUI"]      = "OrderHallMissionFrame",
-	["Blizzard_ObliterumUI"]      = "ObliterumForgeFrame",
-	["Blizzard_QuestChoice"]      = "QuestChoiceFrame",
-	["Blizzard_SocialUI"]         = "FriendsFrame",
-	["Blizzard_StoreUI"]          = "StoreFrame",
-	["Blizzard_TalentUI"]         = "PlayerTalentFrame",
-	["Blizzard_TradeSkillUI"]     = "TradeSkillFrame",
+	["Blizzard_AchievementUI"]		= "AchievementFrame",
+	["Blizzard_ArchaeologyUI"]		= "ArchaeologyFrame",
+	["Blizzard_ArtifactUI"]			= "ArtifactFrame",
+	["Blizzard_AuctionUI"]			= "AuctionFrame",
+	["Blizzard_BindingUI"]			= "KeyBindingFrame",
+	["Blizzard_BlackMarketUI"]		= "BlackMarketFrame",
+	["Blizzard_Calendar"]			= "CalendarFrame",
+	["Blizzard_Collections"]		= "CollectionsJournal",
+	["Blizzard_EncounterJournal"]	= "EncounterJournal",
+	["Blizzard_FlightMap"]			= "FlightMapFrame",
+	["Blizzard_GuildUI"]			= "GuildFrame",
+	["Blizzard_GuildBankUI"]		= "GuildBankFrame",
+	["Blizzard_LookingForGuildUI"]	= "LookingForGuildFrame",
+	["Blizzard_MacroUI"]			= "MacroFrame",
+	["Blizzard_OrderHallUI"]		= "OrderHallMissionFrame",
+	["Blizzard_ObliterumUI"]		= "ObliterumForgeFrame",
+	["Blizzard_QuestChoice"]		= "QuestChoiceFrame",
+	["Blizzard_SocialUI"]			= "FriendsFrame",
+	["Blizzard_StoreUI"]			= "StoreFrame",
+	["Blizzard_CatalogShop"]			= "CatalogShopFrame",
+	["Blizzard_TalentUI"]			= "PlayerTalentFrame",
+	["Blizzard_TradeSkillUI"]		= "TradeSkillFrame",
+	["Blizzard_HousingDashboard"]	= "HousingDashboardFrame",
+	["Blizzard_Communities"]		= "CommunitiesFrame",
+	["Blizzard_ProfessionsBook"]	= "ProfessionsBookFrame",
+	["Blizzard_PlayerSpells"]		= "PlayerSpellsFrame",
 	-- complex ones with multiple frames
-	["Blizzard_GarrisonUI"]       = { 
-		"GarrisonLandingPage", 
-		"GarrisonMissionFrame", 
-		"GarrisonShipyardFrame", 
-		"GarrisonBuildingFrame" 
+	["Blizzard_GarrisonUI"] = {
+		"GarrisonLandingPage",
+		"GarrisonMissionFrame",
+		"GarrisonShipyardFrame",
+		"GarrisonBuildingFrame",
 	},
 };
 
 local ThirdPartyAddons = {
-	["WowLua"]                  = "WowLuaFrame",
-	["totalRP3_Extended_Tools"] = "TRP3_ToolFrame",
-	["totalRP3_Extended"]       = "TRP3_DocumentFrame",
-	["Best_Quest"]              = "bestquestMain",
-	["totalRP3"]                = { "TRP3_MainFrame", "TRP3_NPCTalk" },
-	["Altoholic"]               = "AltoholicFrame",
-	["FishingBuddy"]            = "FishingBuddyFrame",
-	["RaidAchievement"]         = "PSFeamain1",
+	["WowLua"]						= "WowLuaFrame",
+	["totalRP3_Extended_Tools"]		= "TRP3_ToolFrame",
+	["totalRP3_Extended"]			= "TRP3_DocumentFrame",
+	["Best_Quest"]					= "bestquestMain",
+	["totalRP3"] = {
+		"TRP3_MainFrame",
+		"TRP3_NPCTalk",
+	},
+	["Altoholic"]					= "AltoholicFrame",
+	["FishingBuddy"]				= "FishingBuddyFrame",
+	["RaidAchievement"]				= "PSFeamain1",
+	["BetterFriendlist"]			= "BetterFriendsFrame",
 };
 
 local function RegisterSettings()
