@@ -1,3 +1,7 @@
+# 1.0.4
+
+12.0.5 toc update
+
 # 1.0.3
 
 Added options for Blizzard frames: HousingDashboardFrame, ProfessionsBookFrame, and PlayerSpellsFrame
