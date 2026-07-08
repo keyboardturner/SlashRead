@@ -42,8 +42,15 @@ local function StartReading(self)
 	end
 end
 
-local function StopReading()
-	CancelEmote()
+local function StopReading(self)
+	if self and type(self) == "table" and self.GetName then
+		local frameName = self:GetName();
+		if SlashReadDB[frameName] == false then
+			return;
+		end
+	end
+
+	CancelEmote();
 end
 
 local function HookFrame(frameObject)
@@ -187,7 +194,9 @@ SlashRead:SetScript("OnEvent", function(self, event, arg1)
 		end
 		return
 	elseif event == "TAXIMAP_CLOSED" then
-		StopReading();
+		if not SlashReadDB["Taximap"] ~= false then
+			StopReading();
+		end
 		return
 	end
 
