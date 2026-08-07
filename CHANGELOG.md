@@ -1,3 +1,7 @@
+# 1.0.7
+
+12.1.0 toc update
+
 # 1.0.6
 
 Only do CancelEmote if the frame is an emote you /read for
